@@ -7,18 +7,46 @@ interface EmailOptions {
   text?: string;
 }
 
-// Create reusable transporter
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASSWORD,
-  },
-});
+// Check if email is configured
+const isEmailConfigured = () => {
+  return !!(
+    process.env.SMTP_HOST &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASSWORD
+  );
+};
+
+// Create reusable transporter only if configured
+let transporter: nodemailer.Transporter | null = null;
+
+if (isEmailConfigured()) {
+  transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || '587'),
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASSWORD,
+    },
+  });
+}
 
 export async function sendEmail({ to, subject, html, text }: EmailOptions) {
+  // If email not configured, just log to console
+  if (!isEmailConfigured() || !transporter) {
+    console.log('📧 EMAIL NOT CONFIGURED - Form submission logged:');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log(`To: ${to}`);
+    console.log(`Subject: ${subject}`);
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log(text || html);
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log('💡 To receive emails, configure SMTP settings in .env.local');
+    console.log('   See docs/FORM_NOTIFICATIONS_SETUP.md for instructions');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+    return { success: true, messageId: 'console-log' };
+  }
+
   try {
     const info = await transporter.sendMail({
       from: `"InfotechXpertVision" <${process.env.SMTP_USER}>`,
@@ -28,10 +56,11 @@ export async function sendEmail({ to, subject, html, text }: EmailOptions) {
       html,
     });
 
-    console.log('Email sent: %s', info.messageId);
+    console.log('✅ Email sent successfully: %s', info.messageId);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Email error:', error);
+    console.error('❌ Email error:', error);
+    console.log('💡 Check your SMTP settings in .env.local');
     return { success: false, error };
   }
 }
