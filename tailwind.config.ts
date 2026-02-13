@@ -3,10 +3,9 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {
@@ -24,8 +23,8 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#EC4899", // Neon Pink
+          foreground: "#FFFFFF",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -51,6 +50,17 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Digimax Custom Colors
+        dark: {
+          bg: "#0B0B15",
+          card: "#151525",
+          border: "#2A2A35",
+        },
+        neon: {
+          pink: "#EC4899",
+          purple: "#8B5CF6",
+          blue: "#3B82F6",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -66,28 +76,37 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "fade-in": {
-          from: { opacity: "0", transform: "translateY(10px)" },
+        "fade-in-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        "slide-in": {
-          from: { transform: "translateX(-100%)" },
-          to: { transform: "translateX(0)" },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
         },
+        "glow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out",
-        "slide-in": "slide-in 0.3s ease-out",
+        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
+        "float": "float 3s ease-in-out infinite",
+        "glow": "glow 2s ease-in-out infinite",
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'neon-gradient': 'linear-gradient(to right, #EC4899, #8B5CF6)',
+        'dark-gradient': 'linear-gradient(to bottom, #0B0B15, #151525)',
+      },
+      boxShadow: {
+        'neon': '0 0 20px rgba(236, 72, 153, 0.5)',
+        'neon-blue': '0 0 20px rgba(59, 130, 246, 0.5)',
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
 };
-
 export default config;

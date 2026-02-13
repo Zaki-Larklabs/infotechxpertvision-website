@@ -1,70 +1,81 @@
 import Link from 'next/link';
-import { Linkedin, Twitter } from 'lucide-react';
+import { Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 
 const footerLinks = {
-  products: [
-    { name: 'AI Analytics Platform', href: '/products/ai-analytics-platform' },
-    { name: 'Student Management System', href: '/products/student-management-system' },
-    { name: 'CRM Pro', href: '/products/crm-pro' },
-    { name: 'Healthcare Portal', href: '/products/healthcare-portal' },
-    { name: 'Inventory Manager', href: '/products/inventory-manager' },
-  ],
   company: [
-    { name: 'About', href: '/about' },
-    { name: 'Pricing', href: '/pricing' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Our Team', href: '/team' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Article & News', href: '/blog' },
+    { name: 'Legal Notices', href: '/legal' },
   ],
-  legal: [
-    { name: 'Privacy Policy', href: '/legal/privacy' },
-    { name: 'Terms of Service', href: '/legal/terms' },
-    { name: 'Cookie Policy', href: '/legal/cookies' },
+  services: [
+    { name: 'Website Development', href: '/services/web' },
+    { name: 'App Development', href: '/services/app' },
+    { name: 'Digital Marketing', href: '/services/marketing' },
+    { name: 'Graphic Design', href: '/services/design' },
+    { name: 'Brand Identity', href: '/services/branding' },
+    { name: 'Search Engine Optimization', href: '/services/seo' },
+  ],
+  support: [
+    { name: 'Help Center', href: '/help' },
+    { name: 'FAQ', href: '/faq' },
+    { name: 'Ticket Support', href: '/support' },
+    { name: 'Sales Support', href: '/sales' },
+    { name: 'Contact Us', href: '/contact' },
   ],
 };
 
 const socialLinks = [
-  { name: 'LinkedIn', href: 'https://linkedin.com/company/infotechxpertvision', icon: Linkedin },
-  { name: 'Twitter', href: 'https://twitter.com/infotechxpert', icon: Twitter },
+  { name: 'Facebook', href: '#', icon: Facebook },
+  { name: 'Twitter', href: '#', icon: Twitter },
+  { name: 'Instagram', href: '#', icon: Instagram },
+  { name: 'LinkedIn', href: '#', icon: Linkedin },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-400 border-t border-slate-800">
-      <div className="container mx-auto px-6 lg:px-8 max-w-7xl py-16 lg:py-20">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16 mb-16">
-          <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-6 group">
-              <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                <span className="text-slate-900 font-bold text-lg">IX</span>
-              </div>
-              <span className="font-semibold text-white">InfotechXpertVision</span>
-            </Link>
-            <p className="text-sm leading-relaxed mb-6 text-slate-500">
-              Digital systems built for modern institutions.
+    <footer className="bg-[#0B0B15] pt-20 pb-10 border-t border-white/5">
+      <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+          
+          {/* Brand */}
+          <div className="lg:col-span-2">
+             <Link href="/" className="flex items-center gap-3 mb-6">
+               <div className="relative h-14 w-auto">
+                  <img src="/logo.png" alt="InfotechXpertVision Logo" className="h-full w-auto object-contain" />
+               </div>
+               <div className="flex flex-col leading-none">
+                  <span className="font-bold text-lg text-white tracking-wide">Infotech</span>
+                  <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">XpertVision</span>
+               </div>
+             </Link>
+            <p className="text-slate-400 max-w-sm mb-8 text-sm leading-relaxed">
+              Transforming ideas into Digital Excellence. Elevate your online presence with our innovative solutions and strategic digital services.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition-all duration-300 hover:scale-105"
+                  className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-black hover:bg-pink-500 hover:text-white transition-all duration-300"
                   aria-label={social.name}
                 >
-                  <social.icon size={18} />
+                  <social.icon size={16} />
                 </a>
               ))}
             </div>
           </div>
 
+          {/* Links 1 */}
           <div>
-            <h3 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Products</h3>
+            <h3 className="font-bold text-white mb-6 text-base">Services</h3>
             <ul className="space-y-3">
-              {footerLinks.products.map((link) => (
+              {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link 
                     href={link.href} 
-                    className="text-sm text-slate-500 hover:text-white transition-colors duration-300"
+                    className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -73,14 +84,32 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Links 2 */}
           <div>
-            <h3 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Company</h3>
+            <h3 className="font-bold text-white mb-6 text-base">Support</h3>
+            <ul className="space-y-3">
+              {footerLinks.support.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    href={link.href} 
+                    className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Links 3 */}
+           <div>
+            <h3 className="font-bold text-white mb-6 text-base">Company</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link 
                     href={link.href} 
-                    className="text-sm text-slate-500 hover:text-white transition-colors duration-300"
+                    className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -89,30 +118,17 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link 
-                    href={link.href} 
-                    className="text-sm text-slate-500 hover:text-white transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} InfotechXpertVision. All rights reserved.
-          </p>
-          <p className="text-sm text-slate-500">
-            Built with precision for modern institutions.
-          </p>
+        {/* Bottom */}
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+          <p>Copyright © {new Date().getFullYear()} InfotechXpertVision. All Rights Reserved.</p>
+            <div className="flex flex-wrap gap-6 justify-center md:justify-end">
+              <Link href="/about" className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200">About Us</Link>
+              <Link href="/pricing" className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200">Pricing</Link>
+              <Link href="/contact" className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200">Contact</Link>
+              <Link href="/blog" className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200">Blog</Link>
+            </div>
         </div>
       </div>
     </footer>

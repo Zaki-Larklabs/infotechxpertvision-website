@@ -6,10 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 const navigation = [
-  { name: 'Products', href: '/products' },
+  { name: 'Homepage', href: '/' },
+  { name: 'About us', href: '/about' },
+  { name: 'Services', href: '/products' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact us', href: '/contact' },
 ];
 
 export function Header() {
@@ -26,91 +27,81 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200' 
-          : 'bg-white/80 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-[#0B0B15]/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'
       }`}
     >
-      <nav className="container mx-auto px-6 lg:px-8 max-w-7xl" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 bg-slate-900 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                <span className="text-white font-bold text-lg">IX</span>
-              </div>
-              <span className="font-semibold text-lg text-slate-900 hidden sm:block">InfotechXpertVision</span>
-            </Link>
-          </div>
-
-          <div className="hidden lg:flex lg:items-center lg:gap-10">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-slate-700 hover:text-slate-900 transition-colors duration-300 font-medium text-[15px]"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden lg:flex lg:items-center lg:gap-4">
-            <Button 
-              variant="ghost" 
-              className="text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all duration-300"
-              asChild
-            >
-              <Link href="/contact">Contact</Link>
-            </Button>
-            <Button 
-              className="bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300 hover:scale-[1.02]"
-              asChild
-            >
-              <Link href="/book-demo">Book Demo</Link>
-            </Button>
-          </div>
-
-          <div className="lg:hidden">
-            <button
-              type="button"
-              className="text-slate-700 hover:text-slate-900 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+      <nav className="container mx-auto px-6 max-w-7xl flex items-center justify-between" aria-label="Main navigation">
+        
+        {/* Logo */}
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center gap-3">
+             <div className="relative h-14 w-auto">
+                <img src="/logo.png" alt="InfotechXpertVision Logo" className="h-full w-auto object-contain" />
+             </div>
+             {/* Text removed if logo contains text, or keep if it's just an icon. 
+                 Assuming logo might be icon-only based on previous icon usage. 
+                 If user says 'cant see properly', maybe it was squished. 
+                 Let's keep text but ensure logo isn't squashed. */}
+             <div className="flex flex-col leading-none">
+                <span className="font-bold text-lg text-white tracking-wide">Infotech</span>
+                <span className="font-bold text-lg text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">XpertVision</span>
+             </div>
+          </Link>
         </div>
 
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="hidden lg:flex items-center gap-4">
+          <Button 
+            className="bg-neon-gradient text-white hover:opacity-90 rounded-full px-6 text-xs font-bold tracking-widest uppercase"
+            asChild
+          >
+            <Link href="/contact">Get Started</Link>
+          </Button>
+        </div>
+
+        {/* Mobile Toggle */}
+        <div className="lg:hidden">
+          <button
+            type="button"
+            className="text-white p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-slate-200">
-            <div className="flex flex-col gap-6">
+          <div className="absolute top-full left-0 right-0 bg-[#0B0B15] border-b border-white/10 shadow-xl animate-fade-in-up p-4">
+            <div className="flex flex-col gap-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-slate-700 hover:text-slate-900 transition-colors font-medium text-base"
+                  className="text-lg font-medium text-slate-300 hover:text-pink-500 px-4 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
-                <Button 
-                  variant="ghost" 
-                  className="justify-start text-slate-700 hover:text-slate-900 hover:bg-slate-100"
-                  asChild
-                >
-                  <Link href="/contact">Contact</Link>
-                </Button>
-                <Button 
-                  className="bg-slate-900 hover:bg-slate-800 text-white"
-                  asChild
-                >
-                  <Link href="/book-demo">Book Demo</Link>
-                </Button>
-              </div>
+              <Button className="w-full bg-neon-gradient" asChild>
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
+              </Button>
             </div>
           </div>
         )}
