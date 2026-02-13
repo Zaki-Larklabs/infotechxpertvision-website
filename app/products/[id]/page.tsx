@@ -204,8 +204,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                   </Card>
                 )}
               </div>
-            </CardContent>
-          </section>
+            </section>
 
           {/* CTA */}
           <section className="text-center">
