@@ -63,18 +63,6 @@
   .text-balance {
     text-wrap: balance;
   }
-  
-  .glass {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20;
-  }
-  
-  .gradient-primary {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-teal-500;
-  }
-  
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-teal-500 bg-clip-text text-transparent;
-  }
 }
 
 /* Smooth scroll */

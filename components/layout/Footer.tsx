@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Linkedin, Twitter } from 'lucide-react';
 
 const footerLinks = {
   products: [
@@ -9,16 +9,9 @@ const footerLinks = {
     { name: 'Healthcare Portal', href: '/products/healthcare-portal' },
     { name: 'Inventory Manager', href: '/products/inventory-manager' },
   ],
-  solutions: [
-    { name: 'For Education', href: '/solutions/education' },
-    { name: 'For Healthcare', href: '/solutions/healthcare' },
-    { name: 'For Enterprise', href: '/solutions/enterprise' },
-    { name: 'For SMEs', href: '/solutions/smes' },
-  ],
   company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Careers', href: '/careers' },
+    { name: 'About', href: '/about' },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'Contact', href: '/contact' },
   ],
   legal: [
@@ -31,48 +24,48 @@ const footerLinks = {
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://linkedin.com/company/infotechxpertvision', icon: Linkedin },
   { name: 'Twitter', href: 'https://twitter.com/infotechxpert', icon: Twitter },
-  { name: 'Facebook', href: 'https://facebook.com/infotechxpertvision', icon: Facebook },
-  { name: 'Instagram', href: 'https://instagram.com/infotechxpertvision', icon: Instagram },
-  { name: 'YouTube', href: 'https://youtube.com/@infotechxpertvision', icon: Youtube },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
+    <footer className="bg-slate-900 text-slate-400 border-t border-slate-800">
+      <div className="container mx-auto px-6 lg:px-8 max-w-7xl py-16 lg:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16 mb-16">
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">IX</span>
+            <Link href="/" className="flex items-center gap-3 mb-6 group">
+              <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <span className="text-slate-900 font-bold text-lg">IX</span>
               </div>
-              <span className="font-bold text-white">InfotechXpertVision</span>
+              <span className="font-semibold text-white">InfotechXpertVision</span>
             </Link>
-            <p className="text-sm mb-4">
-              Enterprise AI & SaaS solutions for modern businesses.
+            <p className="text-sm leading-relaxed mb-6 text-slate-500">
+              Digital systems built for modern institutions.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition-all duration-300 hover:scale-105"
                   aria-label={social.name}
                 >
-                  <social.icon size={20} />
+                  <social.icon size={18} />
                 </a>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Products</h3>
-            <ul className="space-y-2">
+            <h3 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Products</h3>
+            <ul className="space-y-3">
               {footerLinks.products.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm hover:text-white transition-colors">
+                  <Link 
+                    href={link.href} 
+                    className="text-sm text-slate-500 hover:text-white transition-colors duration-300"
+                  >
                     {link.name}
                   </Link>
                 </li>
@@ -81,24 +74,14 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Solutions</h3>
-            <ul className="space-y-2">
-              {footerLinks.solutions.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
-            <ul className="space-y-2">
+            <h3 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Company</h3>
+            <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm hover:text-white transition-colors">
+                  <Link 
+                    href={link.href} 
+                    className="text-sm text-slate-500 hover:text-white transition-colors duration-300"
+                  >
                     {link.name}
                   </Link>
                 </li>
@@ -107,11 +90,14 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Legal</h3>
-            <ul className="space-y-2">
+            <h3 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider">Legal</h3>
+            <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm hover:text-white transition-colors">
+                  <Link 
+                    href={link.href} 
+                    className="text-sm text-slate-500 hover:text-white transition-colors duration-300"
+                  >
                     {link.name}
                   </Link>
                 </li>
@@ -120,12 +106,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm">
+        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-slate-500">
             © {new Date().getFullYear()} InfotechXpertVision. All rights reserved.
           </p>
-          <p className="text-sm mt-4 md:mt-0">
-            Contact: {process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'contact@infotechxpertvision.com'}
+          <p className="text-sm text-slate-500">
+            Built with precision for modern institutions.
           </p>
         </div>
       </div>

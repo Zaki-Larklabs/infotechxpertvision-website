@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { products, getProductById } from '@/data/products';
 import { generateSEO, generateProductSchema } from '@/lib/seo';
-import { ArrowRight, CheckCircle, Download, ExternalLink } from 'lucide-react';
+import { ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     title: product.name,
     description: product.description,
     url: `/products/${product.id}`,
-    type: 'product',
     keywords: [product.name, ...product.industries, ...product.useCases]
   });
 }
@@ -205,6 +204,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 )}
               </div>
             </section>
+          )}
 
           {/* CTA */}
           <section className="text-center">
