@@ -1,0 +1,2 @@
+# This file is generated dynamically by app/robots.ts
+# Manual edits will be overwritten
