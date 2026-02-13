@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sanitizeInput } from '@/lib/utils';
+import { sendEmail, generateDemoBookingEmail } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,6 +18,17 @@ export async function POST(request: NextRequest) {
       preferredTime: data.preferredTime ? sanitizeInput(data.preferredTime) : '',
     };
 
+    // Send email notification
+    const emailTemplate = generateDemoBookingEmail(sanitizedData);
+    const emailTo = process.env.LEAD_EMAIL_TO || process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'leads@infotechxpertvision.com';
+    
+    await sendEmail({
+      to: emailTo,
+      subject: emailTemplate.subject,
+      html: emailTemplate.html,
+      text: emailTemplate.text,
+    });
+
     // Send to CRM webhook if configured
     const webhookUrl = process.env.HUBSPOT_WEBHOOK_URL || process.env.PIPEDRIVE_WEBHOOK_URL;
     if (webhookUrl) {
@@ -24,7 +36,7 @@ export async function POST(request: NextRequest) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sanitizedData),
-      });
+      }).catch(err => console.error('Webhook error:', err));
     }
 
     // Send Slack notification if configured
@@ -44,11 +56,8 @@ export async function POST(request: NextRequest) {
             },
           ],
         }),
-      });
+      }).catch(err => console.error('Slack error:', err));
     }
-
-    // Send email notification (implement with your email service)
-    // Example: SendGrid, AWS SES, Nodemailer, etc.
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
