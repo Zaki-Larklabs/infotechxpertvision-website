@@ -154,36 +154,17 @@ export default function HomePage() {
                      </Button>
                   </div>
                   
-                  <div className="relative">
                      {/* Feature Preview */}
-                     <div className="aspect-[4/3] bg-gradient-to-br from-[#1A1A2E] to-[#0B0B15] rounded-2xl border border-white/10 shadow-2xl p-4 flex flex-col gap-4 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/20 rounded-full blur-[80px]" />
-                        
-                        <div className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5">
-                           <div className="w-32 h-4 bg-white/10 rounded" />
-                           <div className="w-8 h-8 rounded-full bg-green-500/20" />
-                        </div>
-                        
-                        <div className="flex gap-4 h-full">
-                           <div className="w-16 h-full bg-white/5 rounded-lg border border-white/5 hidden sm:block" />
-                           <div className="flex-1 space-y-4">
-                              <div className="grid grid-cols-2 gap-4">
-                                 <div className="h-24 bg-pink-500/10 rounded-lg border border-pink-500/20 flex flex-col justify-center items-center">
-                                    <span className="text-3xl font-bold text-white">45</span>
-                                    <span className="text-xs text-pink-400 uppercase mt-1">Classes Today</span>
-                                 </div>
-                                 <div className="h-24 bg-purple-500/10 rounded-lg border border-purple-500/20 flex flex-col justify-center items-center">
-                                    <span className="text-3xl font-bold text-white">1200+</span>
-                                    <span className="text-xs text-purple-400 uppercase mt-1">Present</span>
-                                 </div>
-                              </div>
-                              <div className="flex-1 bg-white/5 rounded-lg border border-white/5 flex items-center justify-center text-slate-600 text-sm">
-                                 Real-time Analytics View
-                              </div>
-                           </div>
+                     <div className="aspect-[4/3] relative rounded-2xl overflow-hidden shadow-2xl group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                        <div className="relative h-full w-full bg-[#151525] border border-white/10 rounded-2xl overflow-hidden">
+                           <img 
+                              src="/attendance-dashboard.png" 
+                              alt="Attendance Management Interface" 
+                              className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                           />
                         </div>
                      </div>
-                  </div>
                </div>
             </div>
          </div>
