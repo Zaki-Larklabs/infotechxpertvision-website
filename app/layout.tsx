@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "Crafting human-centered digital experiences for modern institutions.",
   metadataBase: new URL('https://infotechxpertvision.com'),
   verification: {
-    google: 'google04265d728af9b16a',
+    google: 'vQa-_ehSbZlM_X2U6ge5VCNpSW9jewF0t-3vrOigZV8',
   },
 };
 
