@@ -11,8 +11,8 @@ import { StickyCTA } from "@/components/layout/StickyCTA";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "InfotechXpertVision | Strategic Digital Systems",
-  description: "Crafting human-centered digital experiences for modern institutions.",
+  title: "InfotechXpertVision | Smart College Attendance Management System",
+  description: "Automate attendance, streamline operations, and enhance security with InfotechXpertVision's Intelligent Attendance System. Trusted by modern institutions.",
   metadataBase: new URL('https://infotechxpertvision.com'),
   verification: {
     google: 'vQa-_ehSbZlM_X2U6ge5VCNpSW9jewF0t-3vrOigZV8',
