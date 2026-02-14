@@ -4,17 +4,20 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { 
-  Check, ArrowRight, Zap, Globe, Shield, Smartphone, 
-  Monitor, Code, Star, MessageSquare, Layers, 
+import { Badge } from '@/components/ui/badge'; // Assuming you have this or use custom
+import {
+  Check, ArrowRight, Zap, Globe, Shield, Smartphone,
+  Monitor, Code, Star, MessageSquare, Layers,
   School, Bot, Database, Server, Lock, Activity,
-  Users, Building2, BookOpen, GraduationCap 
+  Users, Building2, BookOpen, GraduationCap
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
+// Animation variants
 const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+  transition: { duration: 0.5 }
 };
 
 const staggerContainer = {
@@ -26,6 +29,8 @@ const staggerContainer = {
 };
 
 export default function HomePage() {
+  const { t } = useTranslation('common');
+
   return (
     <div className="flex flex-col gap-0 overflow-hidden bg-[#0B0B15]">
       
@@ -43,32 +48,32 @@ export default function HomePage() {
             >
                <motion.div variants={fadeInUp}>
                   <span className="text-pink-500 font-bold tracking-widest text-sm uppercase">
-                    Institutional Digital Transformation
+                    {t('hero.badge')}
                   </span>
                </motion.div>
                
                <motion.h1 variants={fadeInUp} className="text-5xl lg:text-7xl font-bold text-white leading-[1.1]">
-                  Smart Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Attendance Management</span> <br/>
-                  for Modern Colleges
+                  {t('hero.title_prefix')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">{t('hero.title_highlight')}</span> <br/>
+                  {t('hero.title_suffix')}
                </motion.h1>
                
                <motion.p variants={fadeInUp} className="text-slate-400 text-lg leading-relaxed max-w-xl">
-                  Automate attendance tracking, centralize student records, and gain real-time insights — all in one secure platform designed for educational efficiency.
+                  {t('hero.description')}
                </motion.p>
                
                <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
                   <Button size="xl" className="bg-neon-gradient text-white rounded-full px-8 shadow-neon hover:shadow-neon-blue transition-all duration-300" asChild>
-                     <Link href="/book-demo">Request Live Demo</Link>
+                     <Link href="/book-demo">{t('hero.cta_primary')}</Link>
                   </Button>
                   <Button variant="outline" size="xl" className="rounded-full px-8 border-white/10 hover:bg-white/5 text-white" asChild>
-                     <Link href="#features">Explore System Features</Link>
+                     <Link href="#features">{t('hero.cta_secondary')}</Link>
                   </Button>
                </motion.div>
 
                <div className="pt-8 flex items-center gap-8 text-slate-500 text-sm font-medium">
-                  <div className="flex items-center gap-2"><Check className="text-purple-500 w-4 h-4" /> 100% Paperless</div>
-                  <div className="flex items-center gap-2"><Check className="text-pink-500 w-4 h-4" /> Real-time Sync</div>
-                  <div className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> Secure Data</div>
+                  <div className="flex items-center gap-2"><Check className="text-purple-500 w-4 h-4" /> {t('hero.feature_paperless')}</div>
+                  <div className="flex items-center gap-2"><Check className="text-pink-500 w-4 h-4" /> {t('hero.feature_sync')}</div>
+                  <div className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> {t('hero.feature_secure')}</div>
                </div>
             </motion.div>
             
@@ -93,22 +98,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- SECTION 2: PROBLEM STATEMENT (Old Industries) --- */}
+      {/* --- SECTION 2: PROBLEM STATEMENT --- */}
       <section className="py-24 bg-[#0B0B15]">
          <div className="container mx-auto max-w-screen-2xl">
             <div className="text-center mb-16">
-               <span className="text-pink-500 font-bold text-xs uppercase tracking-widest">The Problem</span>
-               <h2 className="text-3xl font-bold text-white mt-4">The Attendance Challenge in Modern Institutions</h2>
-               <p className="text-slate-500 mt-4 max-w-2xl mx-auto">Traditional methods are slowing you down. Manual tracking is prone to errors and inefficiency.</p>
+               <span className="text-pink-500 font-bold text-xs uppercase tracking-widest">{t('problem.badge')}</span>
+               <h2 className="text-3xl font-bold text-white mt-4">{t('problem.title')}</h2>
+               <p className="text-slate-500 mt-4 max-w-2xl mx-auto">{t('problem.description')}</p>
             </div>
             
             <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
                {[
-                  { icon: BookOpen, title: 'Manual Registers', desc: 'Time-consuming and prone to human errors.' },
-                  { icon: Users, title: 'Proxy Attendance', desc: 'Students marking attendance for friends.' },
-                  { icon: Database, title: 'Data Silos', desc: 'Records scattered across files and Excel sheets.' },
-                  { icon: Activity, title: 'Delayed Reporting', desc: 'Parents informed too late about absence.' },
-                  { icon: Layers, title: 'Inefficiency', desc: 'Faculty wasting valuable teaching time.' },
+                  { icon: BookOpen, title: t('problem.card_manual.title'), desc: t('problem.card_manual.desc') },
+                  { icon: Users, title: t('problem.card_proxy.title'), desc: t('problem.card_proxy.desc') },
+                  { icon: Database, title: t('problem.card_silos.title'), desc: t('problem.card_silos.desc') },
+                  { icon: Activity, title: t('problem.card_delayed.title'), desc: t('problem.card_delayed.desc') },
+                  { icon: Layers, title: t('problem.card_inefficiency.title'), desc: t('problem.card_inefficiency.desc') },
                ].map((item, i) => (
                   <Card key={i} className="bg-[#151525] border-white/5 p-6 hover:bg-white/5 transition-colors group cursor-pointer text-center">
                      <item.icon className="w-10 h-10 mx-auto text-slate-400 group-hover:text-pink-500 mb-4 transition-colors" />
@@ -120,7 +125,7 @@ export default function HomePage() {
          </div>
       </section>
 
-      {/* --- SECTION 3: OUR SOLUTION (Old Smart Campus) --- */}
+      {/* --- SECTION 3: OUR SOLUTION --- */}
       <section className="py-24 relative">
          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B15] to-[#111122]" />
          <div className="container mx-auto max-w-screen-2xl relative z-10">
@@ -128,19 +133,19 @@ export default function HomePage() {
                <div className="grid lg:grid-cols-2 gap-16 items-center">
                   <div className="space-y-8">
                      <span className="bg-pink-500/10 text-pink-500 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Flagship Product
+                        {t('solution.badge')}
                      </span>
-                     <h2 className="text-3xl lg:text-4xl font-bold text-white">Introducing the InfotechXpertVision Attendance System</h2>
+                     <h2 className="text-3xl lg:text-4xl font-bold text-white">{t('solution.title')}</h2>
                      <p className="text-slate-400 text-lg leading-relaxed">
-                        A unified platform to streamline institutional operations. Our Intelligent Attendance System replaces paper with precision, offering digital tracking, role-based logins, and automated reporting.
+                        {t('solution.description')}
                      </p>
                      
                      <div className="grid sm:grid-cols-2 gap-6">
                         {[
-                           { icon: Check, label: '100% Accuracy' },
-                           { icon: Zap, label: 'Zero Paperwork' },
-                           { icon: Lock, label: 'Secure Cloud Storage' },
-                           { icon: Monitor, label: 'Admin Dashboard' },
+                           { icon: Check, label: t('solution.feat_accuracy') },
+                           { icon: Zap, label: t('solution.feat_paperwork') },
+                           { icon: Lock, label: t('solution.feat_secure') },
+                           { icon: Monitor, label: t('solution.feat_admin') },
                         ].map((feat, i) => (
                            <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition-colors">
                               <feat.icon className="text-purple-400 w-6 h-6" />
@@ -150,7 +155,7 @@ export default function HomePage() {
                      </div>
                      
                      <Button className="mt-4 bg-white text-black hover:bg-slate-200 rounded-full px-8" asChild>
-                        <Link href="/book-demo">Request System Demo</Link>
+                        <Link href="/book-demo">{t('solution.cta')}</Link>
                      </Button>
                   </div>
                   
@@ -170,39 +175,39 @@ export default function HomePage() {
          </div>
       </section>
 
-      {/* --- SECTION 4: KEY FEATURES (Old Core Solutions) --- */}
+      {/* --- SECTION 4: KEY FEATURES --- */}
       <section id="features" className="py-24 bg-[#0B0B15]">
          <div className="container mx-auto max-w-screen-2xl">
             <div className="text-center mb-16 space-y-4">
-               <span className="text-purple-500 font-bold text-xs uppercase tracking-widest">System Capabilities</span>
-               <h2 className="text-3xl lg:text-4xl font-bold text-white">Key System Features</h2>
+               <span className="text-purple-500 font-bold text-xs uppercase tracking-widest">{t('features.badge')}</span>
+               <h2 className="text-3xl lg:text-4xl font-bold text-white">{t('features.title')}</h2>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                {[
                   { 
-                     title: 'Digital Recording', 
+                     title: t('features.feat_recording.title'), 
                      icon: Smartphone, 
-                     desc: 'Mark attendance in clicks on mobile or web. Fast and intuitive.',
-                     features: ['Mobile App', 'Web Portal', 'Instant Sync']
+                     desc: t('features.feat_recording.desc'),
+                     features: [t('features.feat_recording.sub_mobile'), t('features.feat_recording.sub_web'), t('features.feat_recording.sub_sync')]
                   },
                   { 
-                     title: 'Faculty Dashboard', 
+                     title: t('features.feat_dashboard.title'), 
                      icon: Monitor, 
-                     desc: 'Real-time view of class performance and student regularity.',
-                     features: ['Class Stats', 'History View', 'One-Click Reports']
+                     desc: t('features.feat_dashboard.desc'),
+                     features: [t('features.feat_dashboard.sub_class'), t('features.feat_dashboard.sub_history'), t('features.feat_dashboard.sub_reports')]
                   },
                   { 
-                     title: 'Student Management', 
+                     title: t('features.feat_student.title'), 
                      icon: Users, 
-                     desc: 'Complete digital profile for every student in your institution.',
-                     features: ['Bio-data', 'Academic History', 'Parent Contact']
+                     desc: t('features.feat_student.desc'),
+                     features: [t('features.feat_student.sub_bio'), t('features.feat_student.sub_academic'), t('features.feat_student.sub_parent')]
                   },
                   { 
-                     title: 'Automated Reports', 
+                     title: t('features.feat_reports.title'), 
                      icon: Database, 
-                     desc: 'One-click generation of daily, monthly, and yearly reports.',
-                     features: ['PDF Export', 'Excel Download', 'Email Alerts']
+                     desc: t('features.feat_reports.desc'),
+                     features: [t('features.feat_reports.sub_pdf'), t('features.feat_reports.sub_excel'), t('features.feat_reports.sub_email')]
                   },
                ].map((item, i) => (
                   <Card key={i} className="bg-[#151525]/50 backdrop-blur-sm border-white/5 p-8 hover:border-pink-500/30 transition-all duration-300 group hover:-translate-y-2">
@@ -226,12 +231,12 @@ export default function HomePage() {
          </div>
       </section>
 
-      {/* --- SECTION 5: HOW IT WORKS (Old Process) --- */}
+      {/* --- SECTION 5: HOW IT WORKS --- */}
       <section className="py-24 bg-[#0B0B15]">
          <div className="container mx-auto max-w-screen-2xl">
             <div className="text-center mb-20 space-y-4">
-               <span className="text-pink-500 font-bold text-xs uppercase tracking-widest">Workflow</span>
-               <h2 className="text-3xl lg:text-4xl font-bold text-white">Simple. Secure. Structured.</h2>
+               <span className="text-pink-500 font-bold text-xs uppercase tracking-widest">{t('workflow.badge')}</span>
+               <h2 className="text-3xl lg:text-4xl font-bold text-white">{t('workflow.title')}</h2>
             </div>
             
             <div className="grid md:grid-cols-4 gap-8 relative">
@@ -239,10 +244,10 @@ export default function HomePage() {
                <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-pink-500/0 via-pink-500/50 to-purple-500/0 -z-10" />
                
                {[
-                  { step: '01', title: 'System Setup', desc: 'We configure the platform for your institution.' },
-                  { step: '02', title: 'Faculty Access', desc: 'Secure role assignment for teachers and staff.' },
-                  { step: '03', title: 'Mark Attendance', desc: 'Real-time recording via mobile or web.' },
-                  { step: '04', title: 'Automated Reports', desc: 'Instant monitoring, alerts, and analytics.' },
+                  { step: '01', title: t('workflow.step_01.title'), desc: t('workflow.step_01.desc') },
+                  { step: '02', title: t('workflow.step_02.title'), desc: t('workflow.step_02.desc') },
+                  { step: '03', title: t('workflow.step_03.title'), desc: t('workflow.step_03.desc') },
+                  { step: '04', title: t('workflow.step_04.title'), desc: t('workflow.step_04.desc') },
                ].map((item, i) => (
                   <div key={i} className="text-center group bg-[#0B0B15] p-4">
                      <div className="w-24 h-24 mx-auto bg-[#151525] rounded-full flex items-center justify-center mb-6 border-4 border-[#0B0B15] shadow-lg group-hover:border-pink-500 transition-colors relative z-10">
@@ -256,23 +261,21 @@ export default function HomePage() {
          </div>
       </section>
 
-      {/* --- SECTION 6: BENEFITS (Old Why Infotech) --- */}
+      {/* --- SECTION 6: BENEFITS --- */}
       <section id="beneficiaries" className="py-24 bg-[#151525] relative overflow-hidden">
          <div className="absolute -left-40 -top-40 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
          <div className="container mx-auto max-w-screen-2xl grid lg:grid-cols-2 gap-16 items-center relative z-10">
             <div>
                <h2 className="text-3xl lg:text-5xl font-bold text-white mb-8 leading-tight">
-                  Designed Specifically for <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Educational Institutions</span>
+                  {t('benefits.title_prefix')} <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">{t('benefits.title_highlight')}</span>
                </h2>
                <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                  We understand the unique challenges of colleges and schools. Our system is built to reduce workload, improve accuracy, and ensure data integrity.
+                  {t('benefits.description')}
                </p>
                
                <div className="space-y-4">
-                  {[
-                     'Reduce Admin Workload', 'Eliminate Paper Registers', 'Prevent Proxy Attendance', 'Centralize Data Availability'
-                  ].map((item, i) => (
+                  {(t('benefits.list', { returnObjects: true }) as string[]).map((item: string, i: number) => (
                      <div key={i} className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center">
                            <Check className="text-green-500 w-4 h-4" />
@@ -286,23 +289,23 @@ export default function HomePage() {
              <div className="grid grid-cols-2 gap-4">
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 hover:border-pink-500/30 transition-colors">
                    <Users className="text-purple-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">Students</h4>
-                   <p className="text-slate-500 text-sm">Transparency</p>
+                   <h4 className="text-white font-bold mb-1">{t('benefits.cards.students')}</h4>
+                   <p className="text-slate-500 text-sm">{t('benefits.cards.transparency')}</p>
                 </Card>
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 translate-y-8 hover:border-pink-500/30 transition-colors">
                    <Building2 className="text-pink-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">Admin</h4>
-                   <p className="text-slate-500 text-sm">Control</p>
+                   <h4 className="text-white font-bold mb-1">{t('benefits.cards.admin')}</h4>
+                   <p className="text-slate-500 text-sm">{t('benefits.cards.control')}</p>
                 </Card>
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 hover:border-pink-500/30 transition-colors">
                    <GraduationCap className="text-yellow-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">Faculty</h4>
-                   <p className="text-slate-500 text-sm">Efficiency</p>
+                   <h4 className="text-white font-bold mb-1">{t('benefits.cards.faculty')}</h4>
+                   <p className="text-slate-500 text-sm">{t('benefits.cards.efficiency')}</p>
                 </Card>
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 translate-y-8 hover:border-pink-500/30 transition-colors">
                    <BookOpen className="text-blue-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">Parents</h4>
-                   <p className="text-slate-500 text-sm">Updates</p>
+                   <h4 className="text-white font-bold mb-1">{t('benefits.cards.parents')}</h4>
+                   <p className="text-slate-500 text-sm">{t('benefits.cards.updates')}</p>
                 </Card>
              </div>
          </div>
@@ -311,12 +314,12 @@ export default function HomePage() {
       {/* --- SECTION 7: TRUST & CREDIBILITY --- */}
       <section className="py-24 relative overflow-hidden">
          <div className="container mx-auto max-w-screen-2xl text-center">
-             <h2 className="text-3xl font-bold text-white mb-12">Built With Secure Modern Tech</h2>
+             <h2 className="text-3xl font-bold text-white mb-12">{t('trust.title')}</h2>
              <div className="flex flex-wrap justify-center gap-12 opacity-60 hover:opacity-100 transition-all duration-500">
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Shield className="text-purple-400"/> Encrypted</div>
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Server className="text-green-400"/> Cloud Hosted</div>
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Database className="text-yellow-400"/> Scalable DB</div>
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Lock className="text-pink-400"/> Data Privacy</div>
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Shield className="text-purple-400"/> {t('trust.encrypted')}</div>
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Server className="text-green-400"/> {t('trust.cloud')}</div>
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Database className="text-yellow-400"/> {t('trust.scalable')}</div>
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Lock className="text-pink-400"/> {t('trust.privacy')}</div>
              </div>
          </div>
       </section>
@@ -331,17 +334,17 @@ export default function HomePage() {
                
                <div className="relative z-10 max-w-3xl mx-auto space-y-8">
                   <h2 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
-                     Ready to Digitize Your Attendance System?
+                     {t('cta_section.title')}
                   </h2>
                   <p className="text-pink-100 text-lg lg:text-xl">
-                     Get started with the most advanced attendance management platform for institutions.
+                     {t('cta_section.description')}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
                      <Button size="xl" className="bg-white text-pink-600 hover:bg-slate-100 border-0 rounded-full px-12 shadow-2xl font-bold" asChild>
-                        <Link href="/book-demo">Schedule Demo</Link>
+                        <Link href="/book-demo">{t('cta_section.schedule')}</Link>
                      </Button>
                      <Button size="xl" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-12" asChild>
-                        <Link href="/contact">Contact Sales</Link>
+                        <Link href="/contact">{t('cta_section.contact')}</Link>
                      </Button>
                   </div>
                </div>

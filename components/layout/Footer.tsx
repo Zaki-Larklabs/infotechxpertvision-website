@@ -1,30 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
-
-const footerLinks = {
-  company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Our Team', href: '/team' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Article & News', href: '/blog' },
-    { name: 'Legal Notices', href: '/legal' },
-  ],
-  services: [
-    { name: 'Website Development', href: '/services/web' },
-    { name: 'App Development', href: '/services/app' },
-    { name: 'Digital Marketing', href: '/services/marketing' },
-    { name: 'Graphic Design', href: '/services/design' },
-    { name: 'Brand Identity', href: '/services/branding' },
-    { name: 'Search Engine Optimization', href: '/services/seo' },
-  ],
-  support: [
-    { name: 'Help Center', href: '/help' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Ticket Support', href: '/support' },
-    { name: 'Sales Support', href: '/sales' },
-    { name: 'Contact Us', href: '/contact' },
-  ],
-};
+import { useTranslation } from 'react-i18next';
 
 const socialLinks = [
   { name: 'Facebook', href: '#', icon: Facebook },
@@ -34,6 +12,33 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { t } = useTranslation('common');
+
+  const footerLinks = {
+    company: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Our Team', href: '/team' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Article & News', href: '/blog' },
+      { name: 'Legal Notices', href: '/legal' },
+    ],
+    services: [
+      { name: 'Website Development', href: '/services/web' },
+      { name: 'App Development', href: '/services/app' },
+      { name: 'Digital Marketing', href: '/services/marketing' },
+      { name: 'Graphic Design', href: '/services/design' },
+      { name: 'Brand Identity', href: '/services/branding' },
+      { name: 'Search Engine Optimization', href: '/services/seo' },
+    ],
+    support: [
+      { name: 'Help Center', href: '/help' },
+      { name: 'FAQ', href: '/faq' },
+      { name: 'Ticket Support', href: '/support' },
+      { name: 'Sales Support', href: '/sales' },
+      { name: 'Contact Us', href: '/contact' },
+    ],
+  };
+
   return (
     <footer className="bg-[#0B0B15] pt-20 pb-10 border-t border-white/5">
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
@@ -51,7 +56,7 @@ export function Footer() {
                </div>
              </Link>
             <p className="text-slate-400 max-w-sm mb-8 text-sm leading-relaxed">
-              InfotechXpertVision is a product-driven technology company focused on building intelligent digital systems for educational institutions. Our flagship solution, the College Attendance Management System, helps institutions streamline operations, improve transparency, and digitize attendance management with precision and security.
+              {t('footer.description')}
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -69,7 +74,7 @@ export function Footer() {
 
           {/* Links 1 */}
           <div>
-            <h3 className="font-bold text-white mb-6 text-base">Services</h3>
+            <h3 className="font-bold text-white mb-6 text-base">{t('footer.services')}</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
@@ -86,7 +91,7 @@ export function Footer() {
 
           {/* Links 2 */}
           <div>
-            <h3 className="font-bold text-white mb-6 text-base">Support</h3>
+            <h3 className="font-bold text-white mb-6 text-base">{t('footer.support')}</h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
@@ -103,7 +108,7 @@ export function Footer() {
 
           {/* Links 3 */}
            <div>
-            <h3 className="font-bold text-white mb-6 text-base">Company</h3>
+            <h3 className="font-bold text-white mb-6 text-base">{t('footer.company')}</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -122,7 +127,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>Copyright © {new Date().getFullYear()} InfotechXpertVision. All Rights Reserved.</p>
+          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
             <div className="flex flex-wrap gap-6 justify-center md:justify-end">
               <Link href="/about" className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200">About Us</Link>
               <Link href="/pricing" className="text-slate-400 hover:text-pink-500 text-sm transition-colors duration-200">Pricing</Link>

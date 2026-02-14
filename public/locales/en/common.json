@@ -1,0 +1,101 @@
+{
+  "nav": {
+    "product": "Product",
+    "features": "Features",
+    "institutions": "Institutions",
+    "pricing": "Pricing",
+    "demo": "Demo",
+    "contact": "Contact",
+    "bookDemo": "Book Demo"
+  },
+  "hero": {
+    "badge": "Institutional Digital Transformation",
+    "title_prefix": "Smart Digital",
+    "title_highlight": "Attendance Management",
+    "title_suffix": "for Modern Colleges",
+    "description": "Automate attendance tracking, centralize student records, and gain real-time insights — all in one secure platform designed for educational efficiency.",
+    "cta_primary": "Request Live Demo",
+    "cta_secondary": "Explore System Features",
+    "feature_paperless": "100% Paperless",
+    "feature_sync": "Real-time Sync",
+    "feature_secure": "Secure Data"
+  },
+  "problem": {
+    "badge": "The Problem",
+    "title": "The Attendance Challenge in Modern Institutions",
+    "description": "Traditional methods are slowing you down. Manual tracking is prone to errors and inefficiency.",
+    "card_manual": { "title": "Manual Registers", "desc": "Time-consuming and prone to human errors." },
+    "card_proxy": { "title": "Proxy Attendance", "desc": "Students marking attendance for friends." },
+    "card_silos": { "title": "Data Silos", "desc": "Records scattered across files and Excel sheets." },
+    "card_delayed": { "title": "Delayed Reporting", "desc": "Parents informed too late about absence." },
+    "card_inefficiency": { "title": "Inefficiency", "desc": "Faculty wasting valuable teaching time." }
+  },
+  "solution": {
+    "badge": "Flagship Product",
+    "title": "Introducing the InfotechXpertVision Attendance System",
+    "description": "A unified platform to streamline institutional operations. Our Intelligent Attendance System replaces paper with precision, offering digital tracking, role-based logins, and automated reporting.",
+    "feat_accuracy": "100% Accuracy",
+    "feat_admin": "Admin Dashboard",
+    "feat_paperwork": "Zero Paperwork",
+    "feat_secure": "Secure Cloud Storage",
+    "cta": "Request System Demo"
+  },
+  "features": {
+    "badge": "System Capabilities",
+    "title": "Key System Features",
+    "feat_recording": { "title": "Digital Recording", "desc": "Mark attendance in clicks on mobile or web. Fast and intuitive." },
+    "feat_dashboard": { "title": "Faculty Dashboard", "desc": "Real-time view of class performance and student regularity." },
+    "feat_student": { "title": "Student Management", "desc": "Complete digital profile for every student in your institution." },
+    "feat_reports": { "title": "Automated Reports", "desc": "One-click generation of daily, monthly, and yearly reports." },
+    "buttons": { "learn_more": "Learn More" }
+  },
+  "workflow": {
+    "badge": "Workflow",
+    "title": "Simple. Secure. Structured.",
+    "step_01": { "title": "System Setup", "desc": "We configure the platform for your institution." },
+    "step_02": { "title": "Faculty Access", "desc": "Secure role assignment for teachers and staff." },
+    "step_03": { "title": "Mark Attendance", "desc": "Real-time recording via mobile or web." },
+    "step_04": { "title": "Automated Reports", "desc": "Instant monitoring, alerts, and analytics." }
+  },
+  "benefits": {
+    "title_prefix": "Designed Specifically for",
+    "title_highlight": "Educational Institutions",
+    "description": "We understand the unique challenges of colleges and schools. Our system is built to reduce workload, improve accuracy, and ensure data integrity.",
+    "list": [
+      "Reduce Admin Workload",
+      "Eliminate Paper Registers",
+      "Prevent Proxy Attendance",
+      "Centralize Data Availability"
+    ],
+     "cards": {
+        "students": "Students",
+        "transparency": "Transparency",
+        "admin": "Admin",
+        "control": "Control",
+        "faculty": "Faculty",
+        "efficiency": "Efficiency",
+        "parents": "Parents",
+        "updates": "Updates"
+     }
+  },
+  "trust": {
+    "title": "Built With Secure Modern Tech",
+    "encrypted": "Encrypted",
+    "cloud": "Cloud Hosted",
+    "scalable": "Scalable DB",
+    "privacy": "Data Privacy"
+  },
+  "cta_section": {
+    "title": "Ready to Digitize Your Attendance System?",
+    "description": "Get started with the most advanced attendance management platform for institutions.",
+    "schedule": "Schedule Demo",
+    "contact": "Contact Sales"
+  },
+  "footer": {
+    "description": "InfotechXpertVision is a product-driven technology company focused on building intelligent digital systems for educational institutions.",
+    "services": "Services",
+    "support": "Support",
+    "company": "Company",
+    "copyright": "Copyright © {{year}} InfotechXpertVision. All Rights Reserved."
+  }
+}

@@ -1,14 +1,16 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google"; // Using proper modern sans-serif
+import { Outfit, Noto_Sans_Arabic } from "next/font/google"; // Using proper modern sans-serif
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import Script from 'next/script';
 import { FloatingContact } from "@/components/layout/FloatingContact";
 import { StickyCTA } from "@/components/layout/StickyCTA";
+import { Providers } from "@/components/Providers";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit' });
+const notoSansArabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: '--font-noto-arabic' });
 
 export const metadata: Metadata = {
   title: "InfotechXpertVision | Smart College Attendance Management System",
@@ -25,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" dir="ltr">
       <head>
         <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
@@ -59,9 +61,8 @@ export default function RootLayout({
             <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION} />
         )}
       </head>
-      <body className={`${outfit.className} antialiased min-h-screen bg-dark-bg text-white overflow-x-hidden`}>
-        
-        {/* Google Tag Manager (noscript) */}
+      <body className={`${outfit.variable} ${notoSansArabic.variable} font-sans antialiased min-h-screen bg-dark-bg text-white overflow-x-hidden`}>
+        <Providers>
         <noscript>
             <iframe 
                 src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
@@ -83,9 +84,9 @@ export default function RootLayout({
             <Footer />
             <FloatingContact />
             <StickyCTA />
-        </div>
-        
-        <Toaster />
+            <Toaster />
+          </div>
+        </Providers>
       </body>
     </html>
   );
