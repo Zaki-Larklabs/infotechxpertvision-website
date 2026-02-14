@@ -23,7 +23,7 @@ i18n
     },
 
     react: {
-      useSuspense: true, // typical for http-backend
+      useSuspense: false, 
     }
   });
 

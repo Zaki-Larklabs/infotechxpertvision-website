@@ -12,6 +12,7 @@ import {
   Users, Building2, BookOpen, GraduationCap
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 // Animation variants
 const fadeInUp = {
@@ -29,7 +30,14 @@ const staggerContainer = {
 };
 
 export default function HomePage() {
-  const { t } = useTranslation('common');
+  const { t, ready } = useTranslation('common');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || !ready) return <div className="min-h-screen bg-[#0B0B15]" />; // Avoids flash of keys
 
   return (
     <div className="flex flex-col gap-0 overflow-hidden bg-[#0B0B15]">

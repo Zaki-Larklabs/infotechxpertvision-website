@@ -10,17 +10,12 @@ export function LanguageToggle() {
 
   useEffect(() => {
     setMounted(true);
-    // Force direction update on mount based on detected language
-    const dir = i18n.language === 'ur' ? 'rtl' : 'ltr';
-    document.documentElement.dir = dir;
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'ur' : 'en';
     i18n.changeLanguage(newLang);
-    const dir = newLang === 'ur' ? 'rtl' : 'ltr';
-    document.documentElement.dir = dir;
     document.documentElement.lang = newLang;
   };
 

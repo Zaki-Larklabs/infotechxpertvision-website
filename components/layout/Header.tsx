@@ -8,17 +8,22 @@ import { LanguageToggle } from '@/components/LanguageToggle';
 import { useTranslation } from 'react-i18next';
 
 export function Header() {
-  const { t } = useTranslation('common');
+  const { t, ready } = useTranslation('common');
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Prevent hydration mismatch
+  if (!mounted || !ready) return <header className="fixed top-0 left-0 right-0 z-50 bg-transparent h-20" />;
 
   const navigation = [
     { name: t('nav.product'), href: '/' },

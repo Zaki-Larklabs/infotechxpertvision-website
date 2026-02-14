@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Check, HelpCircle, ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -18,79 +20,55 @@ const fadeInUp = {
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
 };
 
-const pricingPlans = [
-  {
-    name: 'Starter',
-    price: '₹49,999',
-    description: 'Perfect for schools & small businesses starting their digital journey.',
-    features: [
-      'Responsive Website (5 Pages)',
-      'Basic CMS Integration',
-      'Contact Form & Map',
-      'Social Media Integration',
-      '1 Year Free Hosting',
-      'Basic SEO Setup',
-    ],
-    cta: 'Get Started',
-    popular: false,
-    gradient: 'from-blue-500 to-cyan-400'
-  },
-  {
-    name: 'Growth',
-    price: '₹1,49,999',
-    description: 'Comprehensive solution for colleges and growing institutions.',
-    features: [
-      'Smart Campus Module (Basic)',
-      'Student Information System',
-      'Fee Management Portal',
-      'Advanced SEO & Analytics',
-      'Payment Gateway Integration',
-      'Priority Email Support',
-      'Admin Dashboard',
-    ],
-    cta: 'Choose Growth',
-    popular: true,
-    gradient: 'from-pink-500 to-purple-600'
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'Full-scale digital ecosystem for universities and large enterprises.',
-    features: [
-      'Full Smart Campus Suite',
-      'Custom Mobile App (iOS/Android)',
-      'AI Automation & Chatbots',
-      'Dedicated Cloud Infrastructure',
-      'Role-Based Access Control',
-      '24/7 Dedicated Support',
-      'SLA & Uptime Guarantee',
-    ],
-    cta: 'Contact Sales',
-    popular: false,
-    gradient: 'from-purple-500 to-indigo-600'
-  }
-];
-
-const faqs = [
-  {
-    question: "Do you offer custom packages?",
-    answer: "Yes, we understand that every institution is unique. We can tailor a package specifically for your requirements."
-  },
-  {
-    question: "What is included in the 1 Year Free Hosting?",
-    answer: "Our hosting package includes secure cloud storage, SSL certificate, and daily backups to ensure your data is safe and your site is always online."
-  },
-  {
-    question: "Can I upgrade my plan later?",
-    answer: "Absolutely. You can start with the Starter plan and upgrade to Growth or Enterprise as your institution scales."
-  },
-  {
-    question: "Do you provide training for the software?",
-    answer: "Yes, all our product implementations include comprehensive training sessions for your staff and administrators."
-  }
-];
+// Data moved to component for translation
 
 export default function PricingPage() {
+  const { t, ready } = useTranslation('common');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Prevent hydration mismatch
+  if (!mounted || !ready) return <div className="min-h-screen bg-[#0B0B15]" />;
+
+  const pricingPlans = [
+    {
+      name: t('pricing.starter.name'),
+      price: t('pricing.starter.price'),
+      description: t('pricing.starter.desc'),
+      features: (t('pricing.starter.features', { returnObjects: true }) as string[]),
+      cta: t('pricing.starter.cta'),
+      popular: false,
+      gradient: 'from-blue-500 to-cyan-400'
+    },
+    {
+      name: t('pricing.growth.name'),
+      price: t('pricing.growth.price'),
+      description: t('pricing.growth.desc'),
+      features: (t('pricing.growth.features', { returnObjects: true }) as string[]),
+      cta: t('pricing.growth.cta'),
+      popular: true,
+      gradient: 'from-pink-500 to-purple-600'
+    },
+    {
+      name: t('pricing.enterprise.name'),
+      price: t('pricing.enterprise.price'),
+      description: t('pricing.enterprise.desc'),
+      features: (t('pricing.enterprise.features', { returnObjects: true }) as string[]),
+      cta: t('pricing.enterprise.cta'),
+      popular: false,
+      gradient: 'from-purple-500 to-indigo-600'
+    }
+  ];
+
+  const faqs = [
+    { question: t('pricing.faq.q1'), answer: t('pricing.faq.a1') },
+    { question: t('pricing.faq.q2'), answer: t('pricing.faq.a2') },
+    { question: t('pricing.faq.q3'), answer: t('pricing.faq.a3') }
+  ];
+
   return (
     <div className="pt-32 pb-24 lg:pt-48 bg-[#0B0B15] min-h-screen relative overflow-hidden">
       
@@ -105,12 +83,12 @@ export default function PricingPage() {
            <motion.div 
              initial="initial" animate="animate" variants={fadeInUp}
            >
-              <span className="text-pink-500 font-bold tracking-widest text-sm uppercase">Transparent Pricing</span>
+              <span className="text-pink-500 font-bold tracking-widest text-sm uppercase">{t('pricing.badge')}</span>
               <h1 className="text-4xl lg:text-6xl font-bold mt-4 text-white leading-tight">
-                 Invest in Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Digital Future</span>
+                 {t('pricing.title')}
               </h1>
               <p className="text-xl text-slate-400 mt-6 font-light">
-                 Scalable solutions tailored for institutions of all sizes. No hidden fees.
+                 {t('pricing.description')}
               </p>
            </motion.div>
         </div>
@@ -155,7 +133,7 @@ export default function PricingPage() {
                   </CardContent>
                   
                   <CardFooter className="pt-8">
-                     <Button className={`w-full h-12 rounded-full font-bold bg-gradient-to-r ${plan.gradient} hover:brightness-110 shadow-lg transition-all`}>
+                     <Button className={`w-full h-12 rounded-full font-bold bg-gradient-to-r ${plan.gradient} hover:brightness-110 shadow-lg transition-all`} asChild>
                         <Link href="/contact">{plan.cta}</Link>
                      </Button>
                   </CardFooter>
@@ -166,7 +144,7 @@ export default function PricingPage() {
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto mb-24">
-           <h2 className="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
+           <h2 className="text-3xl font-bold text-white text-center mb-12">{t('pricing.faq.title')}</h2>
            <Accordion type="single" collapsible className="w-full space-y-4">
               {faqs.map((faq, i) => (
                  <AccordionItem key={i} value={`item-${i}`} className="border border-white/10 rounded-lg px-4 bg-white/5 data-[state=open]:bg-white/10 transition-colors">
@@ -183,9 +161,9 @@ export default function PricingPage() {
 
         {/* CTA Bottom */}
         <div className="text-center">
-            <p className="text-slate-400 mb-6">Need a custom enterprise solution?</p>
-            <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full px-8">
-               <Link href="/contact" className="flex items-center gap-2">Contact our Sales Team <ArrowRight size={16}/></Link>
+            <p className="text-slate-400 mb-6">{t('pricing.enterprise.desc')}</p>
+            <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 rounded-full px-8" asChild>
+               <Link href="/contact" className="flex items-center gap-2">{t('pricing.enterprise.cta')} <ArrowRight size={16}/></Link>
             </Button>
         </div>
 

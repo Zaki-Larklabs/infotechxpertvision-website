@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -27,8 +28,14 @@ const fadeInUp = {
 };
 
 export default function ContactPage() {
+  const { t, ready } = useTranslation('common');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const {
     register,
@@ -51,14 +58,17 @@ export default function ContactPage() {
         setSubmitted(true);
       }
     } catch (error) {
-      alert('Failed to send message. Please try again.');
+      alert(t('contact.form.error'));
     } finally {
       setLoading(false);
     }
   };
 
+  // Prevent hydration mismatch
+  if (!mounted || !ready) return <div className="min-h-screen bg-[#0B0B15]" />;
+
   return (
-    <div className="pt-32 pb-24 lg:pt-48">
+    <div className="pt-32 pb-24 lg:pt-48 bg-[#0B0B15]">
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
         <motion.div
             initial="initial"
@@ -67,13 +77,13 @@ export default function ContactPage() {
             className="text-center mb-20"
         >
           <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary mb-6">
-            Contact Support
+            {t('contact.badge')}
           </div>
           <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-foreground tracking-tight leading-[1.05]">
-            Get in Touch
+            {t('contact.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond promptly.
+            {t('contact.description')}
           </p>
         </motion.div>
 
@@ -89,9 +99,9 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="text-white" size={32} />
                 </div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">Message Sent</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">{t('contact.form.success_title')}</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Thank you for contacting us. We'll get back to you within 24 hours.
+                  {t('contact.form.success_desc')}
                 </p>
               </motion.div>
             ) : (
@@ -104,11 +114,11 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                        <Label htmlFor="name" className="text-foreground font-medium mb-2 block">Name</Label>
+                        <Label htmlFor="name" className="text-foreground font-medium mb-2 block">{t('contact.form.name')}</Label>
                         <Input
                         id="name"
                         {...register('name')}
-                        placeholder="Your name"
+                        placeholder={t('contact.form.name_ph')}
                         className="h-12"
                         />
                         {errors.name && (
@@ -116,12 +126,12 @@ export default function ContactPage() {
                         )}
                     </div>
                     <div>
-                        <Label htmlFor="email" className="text-foreground font-medium mb-2 block">Email</Label>
+                        <Label htmlFor="email" className="text-foreground font-medium mb-2 block">{t('contact.form.email')}</Label>
                         <Input
                         id="email"
                         type="email"
                         {...register('email')}
-                        placeholder="your@email.com"
+                        placeholder={t('contact.form.email_ph')}
                         className="h-12"
                         />
                         {errors.email && (
@@ -131,11 +141,11 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="subject" className="text-foreground font-medium mb-2 block">Subject</Label>
+                    <Label htmlFor="subject" className="text-foreground font-medium mb-2 block">{t('contact.form.subject')}</Label>
                     <Input
                       id="subject"
                       {...register('subject')}
-                      placeholder="How can we help?"
+                      placeholder={t('contact.form.subject_ph')}
                       className="h-12"
                     />
                     {errors.subject && (
@@ -144,11 +154,11 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message" className="text-foreground font-medium mb-2 block">Message</Label>
+                    <Label htmlFor="message" className="text-foreground font-medium mb-2 block">{t('contact.form.message')}</Label>
                     <Textarea
                       id="message"
                       {...register('message')}
-                      placeholder="Tell us more..."
+                      placeholder={t('contact.form.message_ph')}
                       rows={6}
                       className="resize-none"
                     />
@@ -163,7 +173,7 @@ export default function ContactPage() {
                     className="w-full h-14 text-lg font-medium shadow-premium transition-all duration-300 hover:scale-[1.01]"
                     disabled={loading}
                   >
-                    {loading ? 'Sending...' : 'Send Message'}
+                    {loading ? t('contact.form.submitting') : t('contact.form.submit')}
                   </Button>
                 </form>
               </motion.div>
@@ -182,8 +192,8 @@ export default function ContactPage() {
                   <Mail size={20} className="text-primary" />
                 </div>
                 <div>
-                    <h3 className="font-semibold text-foreground">Email</h3>
-                    <p className="text-sm text-muted-foreground">Direct contact</p>
+                    <h3 className="font-semibold text-foreground">{t('contact.info.email')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('contact.info.email_desc')}</p>
                 </div>
               </div>
               <a
@@ -205,8 +215,8 @@ export default function ContactPage() {
                   <Phone size={20} className="text-primary" />
                 </div>
                 <div>
-                    <h3 className="font-semibold text-foreground">Phone</h3>
-                    <p className="text-sm text-muted-foreground">Mon-Fri from 8am to 5pm</p>
+                    <h3 className="font-semibold text-foreground">{t('contact.info.phone')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('contact.info.phone_desc')}</p>
                 </div>
               </div>
               <div className="space-y-2">
@@ -233,14 +243,14 @@ export default function ContactPage() {
                   <MapPin size={20} className="text-primary" />
                 </div>
                 <div>
-                    <h3 className="font-semibold text-foreground">Office</h3>
-                    <p className="text-sm text-muted-foreground">Visit us</p>
+                    <h3 className="font-semibold text-foreground">{t('contact.info.office')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('contact.info.office_desc')}</p>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                123 Business Street<br />
-                Suite 100<br />
-                City, State 12345
+                {(t('contact.info.address', { returnObjects: true }) as string[]).map((line, i) => (
+                   <span key={i}>{line}<br/></span>
+                ))}
               </p>
             </motion.div>
           </div>
