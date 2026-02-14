@@ -29,7 +29,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-0 overflow-hidden bg-[#0B0B15]">
       
-      {/* --- SECTION 1: HERO (Strategic Version) --- */}
+      {/* --- SECTION 1: HERO (Product Focus) --- */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden px-6 lg:px-12">
         {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[120px] -z-10 animate-pulse" />
@@ -43,37 +43,36 @@ export default function HomePage() {
             >
                <motion.div variants={fadeInUp}>
                   <span className="text-pink-500 font-bold tracking-widest text-sm uppercase">
-                    Strategic Structural Realignment
+                    Institutional Digital Transformation
                   </span>
                </motion.div>
                
                <motion.h1 variants={fadeInUp} className="text-5xl lg:text-7xl font-bold text-white leading-[1.1]">
-                  Intelligent <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Digital Systems</span> <br/>
-                  for Modern Institutions
+                  Smart Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Attendance Management</span> <br/>
+                  for Modern Colleges
                </motion.h1>
                
                <motion.p variants={fadeInUp} className="text-slate-400 text-lg leading-relaxed max-w-xl">
-                  Empowering colleges, schools, and enterprises with AI-powered Smart Campus Management 
-                  and custom scalable architecture. Reduce workload, centralize data, and drive growth.
+                  Automate attendance tracking, centralize student records, and gain real-time insights — all in one secure platform designed for educational efficiency.
                </motion.p>
                
                <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-                  <Button size="xl" className="bg-neon-gradient text-white rounded-full px-8 shadow-neon hover:shadow-neon-blue transition-all duration-300">
-                     <Link href="/contact">Book Private Demo</Link>
+                  <Button size="xl" className="bg-neon-gradient text-white rounded-full px-8 shadow-neon hover:shadow-neon-blue transition-all duration-300" asChild>
+                     <Link href="/book-demo">Request Live Demo</Link>
                   </Button>
-                  <Button variant="outline" size="xl" className="rounded-full px-8 border-white/10 hover:bg-white/5 text-white">
-                     <Link href="/solutions">Explore Solutions</Link>
+                  <Button variant="outline" size="xl" className="rounded-full px-8 border-white/10 hover:bg-white/5 text-white" asChild>
+                     <Link href="#features">Explore System Features</Link>
                   </Button>
                </motion.div>
 
                <div className="pt-8 flex items-center gap-8 text-slate-500 text-sm font-medium">
-                  <div className="flex items-center gap-2"><Check className="text-purple-500 w-4 h-4" /> AI-Powered</div>
-                  <div className="flex items-center gap-2"><Check className="text-pink-500 w-4 h-4" /> Cloud-Based</div>
-                  <div className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> Secure</div>
+                  <div className="flex items-center gap-2"><Check className="text-purple-500 w-4 h-4" /> 100% Paperless</div>
+                  <div className="flex items-center gap-2"><Check className="text-pink-500 w-4 h-4" /> Real-time Sync</div>
+                  <div className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> Secure Data</div>
                </div>
             </motion.div>
             
-            {/* Dashboard Mockup (Product UI) */}
+            {/* Dashboard Mockup */}
             <motion.div 
                initial={{ opacity: 0, x: 50 }}
                animate={{ opacity: 1, x: 0 }}
@@ -85,7 +84,7 @@ export default function HomePage() {
                   <div className="relative bg-[#151525] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
                      <img 
                         src="/hero-dashboard.png" 
-                        alt="Smart Campus Dashboard" 
+                        alt="Attendance Management Dashboard" 
                         className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
                      />
                   </div>
@@ -94,39 +93,135 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- SECTION 2: CORE SOLUTIONS --- */}
+      {/* --- SECTION 2: PROBLEM STATEMENT (Old Industries) --- */}
       <section className="py-24 bg-[#0B0B15]">
          <div className="container mx-auto max-w-screen-2xl">
+            <div className="text-center mb-16">
+               <span className="text-pink-500 font-bold text-xs uppercase tracking-widest">The Problem</span>
+               <h2 className="text-3xl font-bold text-white mt-4">The Attendance Challenge in Modern Institutions</h2>
+               <p className="text-slate-500 mt-4 max-w-2xl mx-auto">Traditional methods are slowing you down. Manual tracking is prone to errors and inefficiency.</p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+               {[
+                  { icon: BookOpen, title: 'Manual Registers', desc: 'Time-consuming and prone to human errors.' },
+                  { icon: Users, title: 'Proxy Attendance', desc: 'Students marking attendance for friends.' },
+                  { icon: Database, title: 'Data Silos', desc: 'Records scattered across files and Excel sheets.' },
+                  { icon: Activity, title: 'Delayed Reporting', desc: 'Parents informed too late about absence.' },
+                  { icon: Layers, title: 'Inefficiency', desc: 'Faculty wasting valuable teaching time.' },
+               ].map((item, i) => (
+                  <Card key={i} className="bg-[#151525] border-white/5 p-6 hover:bg-white/5 transition-colors group cursor-pointer text-center">
+                     <item.icon className="w-10 h-10 mx-auto text-slate-400 group-hover:text-pink-500 mb-4 transition-colors" />
+                     <h3 className="text-white font-bold mb-2">{item.title}</h3>
+                     <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                  </Card>
+               ))}
+            </div>
+         </div>
+      </section>
+
+      {/* --- SECTION 3: OUR SOLUTION (Old Smart Campus) --- */}
+      <section className="py-24 relative">
+         <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B15] to-[#111122]" />
+         <div className="container mx-auto max-w-screen-2xl relative z-10">
+            <div className="bg-[#151525]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 lg:p-16 overflow-hidden">
+               <div className="grid lg:grid-cols-2 gap-16 items-center">
+                  <div className="space-y-8">
+                     <span className="bg-pink-500/10 text-pink-500 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                        Flagship Product
+                     </span>
+                     <h2 className="text-3xl lg:text-4xl font-bold text-white">Introducing the InfotechXpertVision Attendance System</h2>
+                     <p className="text-slate-400 text-lg leading-relaxed">
+                        A unified platform to streamline institutional operations. Our Intelligent Attendance System replaces paper with precision, offering digital tracking, role-based logins, and automated reporting.
+                     </p>
+                     
+                     <div className="grid sm:grid-cols-2 gap-6">
+                        {[
+                           { icon: Check, label: '100% Accuracy' },
+                           { icon: Zap, label: 'Zero Paperwork' },
+                           { icon: Lock, label: 'Secure Cloud Storage' },
+                           { icon: Monitor, label: 'Admin Dashboard' },
+                        ].map((feat, i) => (
+                           <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition-colors">
+                              <feat.icon className="text-purple-400 w-6 h-6" />
+                              <span className="text-white font-medium">{feat.label}</span>
+                           </div>
+                        ))}
+                     </div>
+                     
+                     <Button className="mt-4 bg-white text-black hover:bg-slate-200 rounded-full px-8" asChild>
+                        <Link href="/book-demo">Request System Demo</Link>
+                     </Button>
+                  </div>
+                  
+                  <div className="relative">
+                     {/* Feature Preview */}
+                     <div className="aspect-[4/3] bg-gradient-to-br from-[#1A1A2E] to-[#0B0B15] rounded-2xl border border-white/10 shadow-2xl p-4 flex flex-col gap-4 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/20 rounded-full blur-[80px]" />
+                        
+                        <div className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5">
+                           <div className="w-32 h-4 bg-white/10 rounded" />
+                           <div className="w-8 h-8 rounded-full bg-green-500/20" />
+                        </div>
+                        
+                        <div className="flex gap-4 h-full">
+                           <div className="w-16 h-full bg-white/5 rounded-lg border border-white/5 hidden sm:block" />
+                           <div className="flex-1 space-y-4">
+                              <div className="grid grid-cols-2 gap-4">
+                                 <div className="h-24 bg-pink-500/10 rounded-lg border border-pink-500/20 flex flex-col justify-center items-center">
+                                    <span className="text-3xl font-bold text-white">45</span>
+                                    <span className="text-xs text-pink-400 uppercase mt-1">Classes Today</span>
+                                 </div>
+                                 <div className="h-24 bg-purple-500/10 rounded-lg border border-purple-500/20 flex flex-col justify-center items-center">
+                                    <span className="text-3xl font-bold text-white">1200+</span>
+                                    <span className="text-xs text-purple-400 uppercase mt-1">Present</span>
+                                 </div>
+                              </div>
+                              <div className="flex-1 bg-white/5 rounded-lg border border-white/5 flex items-center justify-center text-slate-600 text-sm">
+                                 Real-time Analytics View
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* --- SECTION 4: KEY FEATURES (Old Core Solutions) --- */}
+      <section id="features" className="py-24 bg-[#0B0B15]">
+         <div className="container mx-auto max-w-screen-2xl">
             <div className="text-center mb-16 space-y-4">
-               <span className="text-purple-500 font-bold text-xs uppercase tracking-widest">Our Core Solutions</span>
-               <h2 className="text-3xl lg:text-4xl font-bold text-white">Comprehensive Digital Ecosystem</h2>
+               <span className="text-purple-500 font-bold text-xs uppercase tracking-widest">System Capabilities</span>
+               <h2 className="text-3xl lg:text-4xl font-bold text-white">Key System Features</h2>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                {[
                   { 
-                     title: 'Smart Campus Suite', 
-                     icon: School, 
-                     desc: 'End-to-end management for educational institutions.',
-                     features: ['Student Lifecycle', 'Fee Automation', 'Academic ERP']
-                  },
-                  { 
-                     title: 'Custom Web Platforms', 
-                     icon: Globe, 
-                     desc: 'Scalable, high-performance web applications.',
-                     features: ['React/Next.js', 'Cloud Native', 'Enterprise Scale']
-                  },
-                  { 
-                     title: 'Mobile Applications', 
+                     title: 'Digital Recording', 
                      icon: Smartphone, 
-                     desc: 'Native and cross-platform mobile experiences.',
-                     features: ['iOS & Android', 'Real-time Sync', 'Offline Mode']
+                     desc: 'Mark attendance in clicks on mobile or web. Fast and intuitive.',
+                     features: ['Mobile App', 'Web Portal', 'Instant Sync']
                   },
                   { 
-                     title: 'AI Automation Systems', 
-                     icon: Bot, 
-                     desc: 'Intelligent workflows to reduce manual effort.',
-                     features: ['Chatbots', 'Predictive Analytics', 'Process RPA']
+                     title: 'Faculty Dashboard', 
+                     icon: Monitor, 
+                     desc: 'Real-time view of class performance and student regularity.',
+                     features: ['Class Stats', 'History View', 'One-Click Reports']
+                  },
+                  { 
+                     title: 'Student Management', 
+                     icon: Users, 
+                     desc: 'Complete digital profile for every student in your institution.',
+                     features: ['Bio-data', 'Academic History', 'Parent Contact']
+                  },
+                  { 
+                     title: 'Automated Reports', 
+                     icon: Database, 
+                     desc: 'One-click generation of daily, monthly, and yearly reports.',
+                     features: ['PDF Export', 'Excel Download', 'Email Alerts']
                   },
                ].map((item, i) => (
                   <Card key={i} className="bg-[#151525]/50 backdrop-blur-sm border-white/5 p-8 hover:border-pink-500/30 transition-all duration-300 group hover:-translate-y-2">
@@ -144,89 +239,18 @@ export default function HomePage() {
                            </li>
                         ))}
                      </ul>
-                     <Link href="/solutions" className="text-sm font-bold text-pink-500 flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Learn More <ArrowRight size={14} />
-                     </Link>
                   </Card>
                ))}
             </div>
          </div>
       </section>
 
-      {/* --- SECTION 3: SMART CAMPUS FOCUS BLOCK --- */}
-      <section className="py-24 relative">
-         <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B15] to-[#111122]" />
-         <div className="container mx-auto max-w-screen-2xl relative z-10">
-            <div className="bg-[#151525]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 lg:p-16 overflow-hidden">
-               <div className="grid lg:grid-cols-2 gap-16 items-center">
-                  <div className="space-y-8">
-                     <span className="bg-pink-500/10 text-pink-500 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Flagship Product
-                     </span>
-                     <h2 className="text-3xl lg:text-4xl font-bold text-white">Smart Campus Management</h2>
-                     <p className="text-slate-400 text-lg leading-relaxed">
-                        A unified platform to streamline institutional operations. From admission to alumni management, 
-                        our AI-driven system automates complex workflows, giving you total control and visibility.
-                     </p>
-                     
-                     <div className="grid sm:grid-cols-2 gap-6">
-                        {[
-                           { icon: Users, label: 'Student Management' },
-                           { icon: Activity, label: 'Attendance Tracking' },
-                           { icon: Database, label: 'Fee Automation' },
-                           { icon: Lock, label: 'Role-Based Access' },
-                        ].map((feat, i) => (
-                           <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-pink-500/30 transition-colors">
-                              <feat.icon className="text-purple-400 w-6 h-6" />
-                              <span className="text-white font-medium">{feat.label}</span>
-                           </div>
-                        ))}
-                     </div>
-                     
-                     <Button className="mt-4 bg-white text-black hover:bg-slate-200 rounded-full px-8" asChild>
-                        <Link href="/book-demo">Request System Demo</Link>
-                     </Button>
-                  </div>
-                  
-                  <div className="relative">
-                     {/* Dashboard Preview */}
-                     <div className="aspect-[4/3] bg-gradient-to-br from-[#1A1A2E] to-[#0B0B15] rounded-2xl border border-white/10 shadow-2xl p-4 flex flex-col gap-4 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/20 rounded-full blur-[80px]" />
-                        
-                        <div className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5">
-                           <div className="w-32 h-4 bg-white/10 rounded" />
-                           <div className="w-8 h-8 rounded-full bg-pink-500/20" />
-                        </div>
-                        
-                        <div className="flex gap-4 h-full">
-                           <div className="w-16 h-full bg-white/5 rounded-lg border border-white/5 hidden sm:block" />
-                           <div className="flex-1 space-y-4">
-                              <div className="grid grid-cols-2 gap-4">
-                                 <div className="h-24 bg-pink-500/10 rounded-lg border border-pink-500/20 flex flex-col justify-center items-center">
-                                    <span className="text-3xl font-bold text-white">98%</span>
-                                    <span className="text-xs text-pink-400 uppercase mt-1">Attendance</span>
-                                 </div>
-                                 <div className="h-24 bg-purple-500/10 rounded-lg border border-purple-500/20 flex flex-col justify-center items-center">
-                                    <span className="text-3xl font-bold text-white">2.4k</span>
-                                    <span className="text-xs text-purple-400 uppercase mt-1">Students</span>
-                                 </div>
-                              </div>
-                              <div className="flex-1 bg-white/5 rounded-lg border border-white/5" />
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      {/* --- SECTION 4: PROCESS (Structured) --- */}
+      {/* --- SECTION 5: HOW IT WORKS (Old Process) --- */}
       <section className="py-24 bg-[#0B0B15]">
          <div className="container mx-auto max-w-screen-2xl">
             <div className="text-center mb-20 space-y-4">
-               <span className="text-pink-500 font-bold text-xs uppercase tracking-widest">Our Methodology</span>
-               <h2 className="text-3xl lg:text-4xl font-bold text-white">From Strategy to Scalable Execution</h2>
+               <span className="text-pink-500 font-bold text-xs uppercase tracking-widest">Workflow</span>
+               <h2 className="text-3xl lg:text-4xl font-bold text-white">Simple. Secure. Structured.</h2>
             </div>
             
             <div className="grid md:grid-cols-4 gap-8 relative">
@@ -234,10 +258,10 @@ export default function HomePage() {
                <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-pink-500/0 via-pink-500/50 to-purple-500/0 -z-10" />
                
                {[
-                  { step: '01', title: 'Discovery', desc: 'Requirement mapping & goal definition.' },
-                  { step: '02', title: 'Architecture', desc: 'System design & tech selection.' },
-                  { step: '03', title: 'Development', desc: 'Secure coding & integration.' },
-                  { step: '04', title: 'Support', desc: 'Deployment & long-term maintenance.' },
+                  { step: '01', title: 'System Setup', desc: 'We configure the platform for your institution.' },
+                  { step: '02', title: 'Faculty Access', desc: 'Secure role assignment for teachers and staff.' },
+                  { step: '03', title: 'Mark Attendance', desc: 'Real-time recording via mobile or web.' },
+                  { step: '04', title: 'Automated Reports', desc: 'Instant monitoring, alerts, and analytics.' },
                ].map((item, i) => (
                   <div key={i} className="text-center group bg-[#0B0B15] p-4">
                      <div className="w-24 h-24 mx-auto bg-[#151525] rounded-full flex items-center justify-center mb-6 border-4 border-[#0B0B15] shadow-lg group-hover:border-pink-500 transition-colors relative z-10">
@@ -251,22 +275,22 @@ export default function HomePage() {
          </div>
       </section>
 
-      {/* --- SECTION 5: WHY INFOTECHXPERTVISION --- */}
-      <section className="py-24 bg-[#151525] relative overflow-hidden">
+      {/* --- SECTION 6: BENEFITS (Old Why Infotech) --- */}
+      <section id="beneficiaries" className="py-24 bg-[#151525] relative overflow-hidden">
          <div className="absolute -left-40 -top-40 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
          <div className="container mx-auto max-w-screen-2xl grid lg:grid-cols-2 gap-16 items-center relative z-10">
             <div>
                <h2 className="text-3xl lg:text-5xl font-bold text-white mb-8 leading-tight">
-                  Built for Precision. <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Designed for Scale.</span>
+                  Designed Specifically for <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Educational Institutions</span>
                </h2>
                <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                  We don't just build websites; we engineer digital ecosystems. Our solutions are designed to handle high loads, secure sensitive data, and adapt to your institution's growth.
+                  We understand the unique challenges of colleges and schools. Our system is built to reduce workload, improve accuracy, and ensure data integrity.
                </p>
                
                <div className="space-y-4">
                   {[
-                     'AI-Ready Architecture', 'Cloud-Based Deployment', 'Enterprise-Grade Security', 'Modular & Customizable'
+                     'Reduce Admin Workload', 'Eliminate Paper Registers', 'Prevent Proxy Attendance', 'Centralize Data Availability'
                   ].map((item, i) => (
                      <div key={i} className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center">
@@ -280,65 +304,38 @@ export default function HomePage() {
             
              <div className="grid grid-cols-2 gap-4">
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 hover:border-pink-500/30 transition-colors">
-                   <Server className="text-purple-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">99.9%</h4>
-                   <p className="text-slate-500 text-sm">Uptime Guarantee</p>
+                   <Users className="text-purple-500 mb-4 w-10 h-10" />
+                   <h4 className="text-white font-bold mb-1">Students</h4>
+                   <p className="text-slate-500 text-sm">Transparency</p>
                 </Card>
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 translate-y-8 hover:border-pink-500/30 transition-colors">
-                   <Shield className="text-pink-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">ISO</h4>
-                   <p className="text-slate-500 text-sm">Standard Security</p>
+                   <Building2 className="text-pink-500 mb-4 w-10 h-10" />
+                   <h4 className="text-white font-bold mb-1">Admin</h4>
+                   <p className="text-slate-500 text-sm">Control</p>
                 </Card>
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 hover:border-pink-500/30 transition-colors">
-                   <Zap className="text-yellow-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">2x</h4>
-                   <p className="text-slate-500 text-sm">Faster Deployment</p>
+                   <GraduationCap className="text-yellow-500 mb-4 w-10 h-10" />
+                   <h4 className="text-white font-bold mb-1">Faculty</h4>
+                   <p className="text-slate-500 text-sm">Efficiency</p>
                 </Card>
                 <Card className="bg-[#0B0B15] border-white/5 p-6 flex flex-col items-center justify-center text-center h-48 translate-y-8 hover:border-pink-500/30 transition-colors">
-                   <Users className="text-blue-500 mb-4 w-10 h-10" />
-                   <h4 className="text-white font-bold mb-1">24/7</h4>
-                   <p className="text-slate-500 text-sm">Dedicated Support</p>
+                   <BookOpen className="text-blue-500 mb-4 w-10 h-10" />
+                   <h4 className="text-white font-bold mb-1">Parents</h4>
+                   <p className="text-slate-500 text-sm">Updates</p>
                 </Card>
              </div>
-         </div>
-      </section>
-
-      {/* --- SECTION 6: INDUSTRIES --- */}
-      <section className="py-24 bg-[#0B0B15]">
-         <div className="container mx-auto max-w-screen-2xl">
-            <div className="text-center mb-16">
-               <h2 className="text-3xl font-bold text-white">Industries We Serve</h2>
-               <p className="text-slate-500 mt-4">Tailored digital solutions for every educational and business sector.</p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-               {[
-                  { icon: GraduationCap, title: 'Colleges', desc: 'Complex role management & ERP.' },
-                  { icon: BookOpen, title: 'Schools', desc: 'Parent-teacher communication.' },
-                  { icon: Users, title: 'Coaching', desc: 'Fees & attendance tracking.' },
-                  { icon: Building2, title: 'SMEs', desc: 'Digital presence & automation.' },
-                  { icon: Globe, title: 'Enterprises', desc: 'Scalable custom architecture.' },
-               ].map((ind, i) => (
-                  <Card key={i} className="bg-[#151525] border-white/5 p-6 hover:bg-white/5 transition-colors group cursor-pointer text-center">
-                     <ind.icon className="w-10 h-10 mx-auto text-slate-400 group-hover:text-pink-500 mb-4 transition-colors" />
-                     <h3 className="text-white font-bold mb-2">{ind.title}</h3>
-                     <p className="text-slate-500 text-xs leading-relaxed">{ind.desc}</p>
-                  </Card>
-               ))}
-            </div>
          </div>
       </section>
 
       {/* --- SECTION 7: TRUST & CREDIBILITY --- */}
       <section className="py-24 relative overflow-hidden">
          <div className="container mx-auto max-w-screen-2xl text-center">
-             <h2 className="text-3xl font-bold text-white mb-12">Trusted Technology Partners</h2>
-             <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                {/* Placeholders for Tech Logos using Text/Icons for now */}
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Code className="text-blue-400"/> React</div>
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Server className="text-green-400"/> Node.js</div>
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Database className="text-yellow-400"/> AWS</div>
-                <div className="flex items-center gap-2 text-xl font-bold text-white"><Shield className="text-purple-400"/> Python</div>
+             <h2 className="text-3xl font-bold text-white mb-12">Built With Secure Modern Tech</h2>
+             <div className="flex flex-wrap justify-center gap-12 opacity-60 hover:opacity-100 transition-all duration-500">
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Shield className="text-purple-400"/> Encrypted</div>
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Server className="text-green-400"/> Cloud Hosted</div>
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Database className="text-yellow-400"/> Scalable DB</div>
+                <div className="flex items-center gap-2 text-xl font-bold text-white"><Lock className="text-pink-400"/> Data Privacy</div>
              </div>
          </div>
       </section>
@@ -353,16 +350,16 @@ export default function HomePage() {
                
                <div className="relative z-10 max-w-3xl mx-auto space-y-8">
                   <h2 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
-                     Ready to Digitize Your Institution?
+                     Ready to Digitize Your Attendance System?
                   </h2>
                   <p className="text-pink-100 text-lg lg:text-xl">
-                     Join the future of education management. Secure, scalable, and simple.
+                     Get started with the most advanced attendance management platform for institutions.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                     <Button size="xl" className="bg-white text-pink-600 hover:bg-slate-100 border-0 rounded-full px-12 shadow-2xl font-bold">
-                        <Link href="/contact">Schedule Demo</Link>
+                     <Button size="xl" className="bg-white text-pink-600 hover:bg-slate-100 border-0 rounded-full px-12 shadow-2xl font-bold" asChild>
+                        <Link href="/book-demo">Schedule Demo</Link>
                      </Button>
-                     <Button size="xl" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-12">
+                     <Button size="xl" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-12" asChild>
                         <Link href="/contact">Contact Sales</Link>
                      </Button>
                   </div>

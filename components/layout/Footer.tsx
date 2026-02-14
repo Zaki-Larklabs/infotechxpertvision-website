@@ -51,7 +51,7 @@ export function Footer() {
                </div>
              </Link>
             <p className="text-slate-400 max-w-sm mb-8 text-sm leading-relaxed">
-              Transforming ideas into Digital Excellence. Elevate your online presence with our innovative solutions and strategic digital services.
+              InfotechXpertVision is a product-driven technology company focused on building intelligent digital systems for educational institutions. Our flagship solution, the College Attendance Management System, helps institutions streamline operations, improve transparency, and digitize attendance management with precision and security.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
