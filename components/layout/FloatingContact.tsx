@@ -4,7 +4,8 @@ import { MessageCircle, Phone } from 'lucide-react';
 
 export function FloatingContact() {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
-  const phoneNumber = process.env.NEXT_PUBLIC_COMPANY_PHONE;
+  const rawPhone = process.env.NEXT_PUBLIC_COMPANY_PHONE || '+91 6380011880';
+  const phoneNumber = rawPhone.split(',')[0].trim();
 
   return (
     <div className="fixed bottom-6 left-6 z-40 flex flex-col space-y-3">

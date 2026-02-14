@@ -187,10 +187,10 @@ export default function ContactPage() {
                 </div>
               </div>
               <a
-                href={`mailto:${process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'contact@infotechxpertvision.com'}`}
+                href={`mailto:${process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'infotechxpertvision@gmail.com'}`}
                 className="text-foreground hover:text-primary transition-colors block font-medium"
               >
-                {process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'contact@infotechxpertvision.com'}
+                {process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'infotechxpertvision@gmail.com'}
               </a>
             </motion.div>
 
@@ -209,12 +209,17 @@ export default function ContactPage() {
                     <p className="text-sm text-muted-foreground">Mon-Fri from 8am to 5pm</p>
                 </div>
               </div>
-              <a
-                href={`tel:${process.env.NEXT_PUBLIC_COMPANY_PHONE || '+15550000000'}`}
-                className="text-foreground hover:text-primary transition-colors block font-medium"
-              >
-                {process.env.NEXT_PUBLIC_COMPANY_PHONE || '+1 (555) 000-0000'}
-              </a>
+              <div className="space-y-2">
+                {(process.env.NEXT_PUBLIC_COMPANY_PHONE || '+91 6380011880, +91 9342849952').split(',').map((phone) => (
+                    <a
+                        key={phone}
+                        href={`tel:${phone.trim()}`}
+                        className="text-foreground hover:text-primary transition-colors block font-medium"
+                    >
+                        {phone.trim()}
+                    </a>
+                ))}
+              </div>
             </motion.div>
 
             <motion.div
