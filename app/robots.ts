@@ -1,14 +1,14 @@
-import { MetadataRoute } from 'next';
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://infotechxpertvision.com';
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://infotechxpertvision.com'
+
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/admin/'],
+      disallow: '/private/',
     },
     sitemap: `${baseUrl}/sitemap.xml`,
-  };
+  }
 }
