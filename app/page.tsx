@@ -198,8 +198,8 @@ export default function HomePage() {
                         ))}
                      </div>
                      
-                     <Button className="mt-4 bg-white text-black hover:bg-slate-200 rounded-full px-8">
-                        Request System Demo
+                     <Button className="mt-4 bg-white text-black hover:bg-slate-200 rounded-full px-8" asChild>
+                        <Link href="/book-demo">Request System Demo</Link>
                      </Button>
                   </div>
                   

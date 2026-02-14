@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
     // Send email notification
     const emailTemplate = generateContactEmail(sanitizedData);
-    const emailTo = process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'contact@infotechxpertvision.com';
+    const emailTo = process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'infotechxpertvision@gmail.com';
     
     await sendEmail({
       to: emailTo,
