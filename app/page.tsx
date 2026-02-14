@@ -82,27 +82,12 @@ export default function HomePage() {
             >
                <div className="relative w-full max-w-xl group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                  <div className="relative bg-[#151525] border border-white/10 rounded-2xl p-4 shadow-2xl">
-                     {/* Mock Browser Header */}
-                     <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-4">
-                        <div className="flex gap-2">
-                           <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                           <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                           <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                        </div>
-                        <div className="h-6 w-full max-w-sm bg-white/5 rounded mx-auto" />
-                     </div>
-                     {/* Mock Dashboard Grid */}
-                     <div className="grid grid-cols-3 gap-4 h-[300px]">
-                        <div className="col-span-1 bg-white/5 rounded-lg border border-white/5 animate-pulse" />
-                        <div className="col-span-2 grid grid-rows-2 gap-4">
-                           <div className="bg-white/5 rounded-lg border border-white/5" />
-                           <div className="grid grid-cols-2 gap-4">
-                              <div className="bg-white/5 rounded-lg border border-white/5" />
-                              <div className="bg-pink-500/10 rounded-lg border border-pink-500/20" />
-                           </div>
-                        </div>
-                     </div>
+                  <div className="relative bg-[#151525] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+                     <img 
+                        src="/hero-dashboard.png" 
+                        alt="Smart Campus Dashboard" 
+                        className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                     />
                   </div>
                </div>
             </motion.div>
