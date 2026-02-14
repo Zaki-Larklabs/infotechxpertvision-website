@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
@@ -45,7 +46,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
            <div className="relative h-10 w-auto">
-              <img src="/logo.png" alt="InfotechXpertVision Logo" className="h-full w-auto object-contain group-hover:brightness-110 transition-all" />
+              <Image src="/logo.png" alt="InfotechXpertVision Logo" width={40} height={40} className="h-full w-auto object-contain group-hover:brightness-110 transition-all" />
            </div>
            <div className="flex flex-col leading-none">
               <span className="font-bold text-base text-white tracking-wide group-hover:text-pink-500 transition-colors">Infotech</span>

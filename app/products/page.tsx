@@ -138,7 +138,7 @@ export default function ProductsPage() {
                 Need Something Custom?
                 </h2>
                 <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto font-light">
-                We build tailored solutions for unique business requirements. Let's discuss your specific needs.
+                We build tailored solutions for unique business requirements. Let&apos;s discuss your specific needs.
                 </p>
                 <Button
                 size="xl"

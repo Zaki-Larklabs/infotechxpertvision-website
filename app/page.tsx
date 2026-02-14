@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // Animation variants
 const fadeInUp = {
@@ -95,10 +96,11 @@ export default function HomePage() {
                <div className="relative w-full max-w-xl group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                   <div className="relative bg-[#151525] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-                     <img 
+                     <Image 
                         src="/hero-dashboard.png" 
                         alt="Attendance Management Dashboard" 
-                        className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                        fill
+                        className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
                      />
                   </div>
                </div>
@@ -171,10 +173,11 @@ export default function HomePage() {
                      <div className="aspect-[4/3] relative rounded-2xl overflow-hidden shadow-2xl group">
                         <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                         <div className="relative h-full w-full bg-[#151525] border border-white/10 rounded-2xl overflow-hidden">
-                           <img 
+                           <Image 
                               src="/attendance-dashboard.png" 
                               alt="Attendance Management Interface" 
-                              className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                              fill
+                              className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
                            />
                         </div>
                      </div>

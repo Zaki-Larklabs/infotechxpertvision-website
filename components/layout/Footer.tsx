@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
@@ -57,7 +58,7 @@ export function Footer() {
           <div className="lg:col-span-2">
              <Link href="/" className="flex items-center gap-3 mb-6">
                <div className="relative h-14 w-auto">
-                  <img src="/logo.png" alt="InfotechXpertVision Logo" className="h-full w-auto object-contain" />
+                  <Image src="/logo.png" alt="InfotechXpertVision Logo" width={56} height={56} className="h-full w-auto object-contain" />
                </div>
                <div className="flex flex-col leading-none">
                   <span className="font-bold text-lg text-white tracking-wide">Infotech</span>
