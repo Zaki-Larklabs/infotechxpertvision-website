@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "InfotechXpertVision | Strategic Digital Systems",
   description: "Crafting human-centered digital experiences for modern institutions.",
   metadataBase: new URL('https://infotechxpertvision.com'),
+  verification: {
+    google: 'google04265d728af9b16a',
+  },
 };
 
 export default function RootLayout({
